@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import datetime as dt
 
 if __name__ == '__main__':
     print("help - список всех команд")
@@ -19,18 +20,16 @@ if __name__ == '__main__':
             # Запросить данные о человеке.
             surname = input("Фамилия: ")
             name = input("Имя: ")
-            Zodiak = input("Знак Зодиака: ")
-            date = [
-                int(input("Год рождения: ")),
-                int(input("Месяц рождения: ")),
-                int(input("День рождения: "))
-                ]
+            zodiak = input("Знак Зодиака: ")
+            date_str = input("Введите дату выпуска (dd/mm/yyyy)\n")
+            date = dt.datetime.strptime(date_str, '%d/%m/%Y').date()
+            print(date)
 
             # Создать словарь.
             human = {
                 'surname': surname,
                 'name': name,
-                'Zodiak': Zodiak,
+                'zodiak': zodiak,
                 'date': date
             }
             # Добавить словарь в список.
@@ -63,25 +62,24 @@ if __name__ == '__main__':
             for idx, worker in enumerate(humans, 1):
                 date = worker.get('date', '')
                 print(
-                    '| {:^4} | {:<14} {:<15} | {:<20} | {}.{}.{:<7} |'.format(
+                    '| {:^4} | {:<14} {:<15} | {:<20} | {}{} |'.format(
                         idx,
                         worker.get('surname', ''),
                         worker.get('name', ''),
-                        worker.get('Zodiak', ''),
-                        date[0],
-                        date[1],
-                        date[2]
+                        worker.get('zodiak', ''),
+                        date,
+                        ' ' * 5
                     )
                 )
             print(line)
 
         elif command.startswith('select '):
-            addedZZ = command[7:]
+            addedzz = command[7:]
             # Инициализировать счетчик.
             count = 0
             # Проверить сведения работников из списка.
             for human in humans:
-                if human.get('Zodiak', '') == addedZZ:
+                if human.get('zodiak', '') == addedzz:
                     count += 1
                     print(
                         '{:>4}: {} {}'.format(
