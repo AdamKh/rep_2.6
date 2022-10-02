@@ -8,6 +8,7 @@ if __name__ == '__main__':
     print("help - список всех команд")
     # Список людей.
     humans = []
+
     # Организовать бесконечный цикл запроса команд.
     while True:
         # Запросить команду из терминала.
@@ -16,6 +17,7 @@ if __name__ == '__main__':
         # Выполнить действие в соответствие с командой.
         if command == 'exit':
             break
+
         elif command == 'add':
             # Запросить данные о человеке.
             surname = input("Фамилия: ")
@@ -32,9 +34,9 @@ if __name__ == '__main__':
                 'zodiak': zodiak,
                 'date': date
             }
+
             # Добавить словарь в список.
             humans.append(human)
-
             # Отсортировать список в случае необходимости.
             if len(humans) > 1:
                 humans.sort(key=lambda item: item.get('date', ''))
@@ -71,10 +73,13 @@ if __name__ == '__main__':
                         ' ' * 5
                     )
                 )
+
             print(line)
 
         elif command.startswith('select '):
+            # Получить введенный ЗЗ
             addedzz = command[7:]
+
             # Инициализировать счетчик.
             count = 0
             # Проверить сведения работников из списка.
@@ -99,5 +104,6 @@ if __name__ == '__main__':
             print("list - вывести список людей;")
             print("help - список всех команд;")
             print("exit - завершить работу с программой.")
+            
         else:
             print(f"Неизвестная команда {command}", file=sys.stderr)
