@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import datetime as dt
+import datetime
 
 if __name__ == '__main__':
     print("help - список всех команд")
@@ -24,8 +24,7 @@ if __name__ == '__main__':
             name = input("Имя: ")
             zodiak = input("Знак Зодиака: ")
             date_str = input("Введите дату выпуска (dd/mm/yyyy)\n")
-            date = dt.datetime.strptime(date_str, '%d/%m/%Y').date()
-            print(date)
+            date = datetime.datetime.strptime(date_str, '%d/%m/%Y').date()
 
             # Создать словарь.
             human = {

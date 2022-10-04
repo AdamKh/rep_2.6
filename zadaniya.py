@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 if __name__ == '__main__':
     # 1
     school = {'1a': 20, '2b': 24, '11a': 15, '11b': 10}
